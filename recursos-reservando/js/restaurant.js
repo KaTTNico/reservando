@@ -1,3 +1,4 @@
+/*CONSTRUCTOR*/
 var Restaurant = function(id, nombre, rubro, ubicacion, horarios, imagen, calificaciones) {
   this.id = id;
   this.nombre = nombre;
@@ -8,6 +9,7 @@ var Restaurant = function(id, nombre, rubro, ubicacion, horarios, imagen, califi
   this.calificaciones = calificaciones;
 }
 
+/*COMPORTAMIENTO*/
 Restaurant.prototype.reservarHorario = function(horarioReservado) {
   this.horarios = this.horarios.filter(horario => horario != horarioReservado)
 }
@@ -18,10 +20,11 @@ Restaurant.prototype.calificar = function(nuevaCalificacion) {
   }
 }
 
-var sumatoria = (numeros) => numeros.reduce((total, numero) => total + numero)
-
-var promedio = (numeros) => (numeros.length != 0) ? sumatoria(numeros) / numeros.length : 0
-
 Restaurant.prototype.obtenerPuntuacion = function() {
   return promedio(this.calificaciones);
 }
+
+/*FUNCIONES*/
+let sumatoria = (numeros) => numeros.reduce((total, numero) => total + numero)
+
+let promedio = (numeros) => (numeros.length != 0) ? sumatoria(numeros) / numeros.length : 0

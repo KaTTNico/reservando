@@ -1,6 +1,6 @@
 var expect = chai.expect
 
-/*TESTS DE LA CLASE RESTAURANT*/
+/*TESTS RESTAURANT*/
 describe('reservar un horario', function() {
   //este es un restaurant robado del archivo listado.js
   let restaurant = new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5])
@@ -74,7 +74,7 @@ describe('Agregar una nueva calificacion', function() {
   })
 })
 
-/*TESTS DE LA CLASE LISTADO*/
+/*TESTS LISTADO*/
 
 describe('Buscar un restaurant', function() {
   it('Dada una lista de restaurantes, al buscar un restaurant existente debe devolverme el mismo.', function() {
@@ -123,5 +123,26 @@ describe('Obtener restaurantes', function() {
     filtroRubro = null
     filtroCiudad = null
     filtroHorario = null
+  })
+})
+
+/*TEST RESERVA*/
+describe('Calcular precio base de una reserva', function() {
+  //crear una reserva
+  let reserva = new Reserva(new Date(2018, 7, 24, 11, 00), 8, 350, "DES1")
+
+  //calcular precio base
+  it('Dada una reserva se debe calcular el precio base',function(){
+    expect(reserva.calcularPrecioBase()).to.be.equal(2800)
+  })
+})
+
+describe('Calcular precio total de una reserva',function(){
+  //crear una reserva
+  let reserva = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
+
+  //calcular precio total
+  it('Dada una reserva se debe calcular su precio total',function(){
+    expect(reserva.calcularPrecioTotal()).to.be.equal(100)
   })
 })
